@@ -13,6 +13,21 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
         @endif
+
+        @if ($page == 'Shop')
+            <link rel="stylesheet" type="text/css" href="{{asset('css/shop_styles.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/shop_responsive.css')}}">
+        @endif
+
+        @if ($page == 'Contact')
+            <link rel="stylesheet" type="text/css" href="{{asset('css/contact_styles.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/contact_responsive.css')}}">        
+        @endif
+
+        @if ($page == "Cart")
+            <link rel="stylesheet" type="text/css" href="{{asset('css/cart_styles.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('css/cart_responsive.css')}}">
+        @endif
        
         <title>{{ config('app.name', 'TadTech')}}</title>
     </head>
@@ -22,66 +37,69 @@
             @include('inc.navbar')
             @yield('content')
 
-            <!-- Brands -->
-            <div class="brands">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="brands_slider_container">
-                                <!-- Brands Slider -->
-                                <div class="owl-carousel owl-theme brands_slider">
+            @if ($page != "Contact" && $page != "Cart")
+                <!-- Brands -->
+                <div class="brands">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="brands_slider_container">
+                                    <!-- Brands Slider -->
+                                    <div class="owl-carousel owl-theme brands_slider">
+                                        
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_1.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_2.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_3.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_4.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_5.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_6.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_7.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="owl-item">
+                                            <div class="brands_item d-flex flex-column justify-content-center">
+                                                <img src="{{asset('images/brands_8.jpg')}}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
                                     
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_1.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_2.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_3.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_4.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_5.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_6.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_7.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item">
-                                        <div class="brands_item d-flex flex-column justify-content-center">
-                                            <img src="{{asset('images/brands_8.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Brands Slider Navigation -->
-                                <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-                                <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+                                    <!-- Brands Slider Navigation -->
+                                    <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
+                                    <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            @endif
 
             {{-- footer --}}
             <footer class="footer">
@@ -201,6 +219,18 @@
         <script src="{{asset('plugins/parallax-js-master/parallax.min.js')}}"></script>
         @if ($page == "Home")
             <script src="{{asset('js/custom.js')}}"></script>
+        @endif
+
+        @if ($page == "Shop")
+            <script src="{{asset('js/shop_custom.js')}}"></script>
+        @endif
+
+        @if ($page == "Contact")
+            <script src="{{asset('js/contact_custom.js')}}"></script>
+        @endif
+
+        @if ($page == "Cart")
+            <script src="{{asset('js/cart_custom.js')}}"></script>
         @endif
     </body>
 </html>

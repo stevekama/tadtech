@@ -14,12 +14,20 @@ class PagesController extends Controller
 
     public function shop()
     {
+        $page = ucfirst('shop');
         
-        return view('pages.shop');
+        return view('pages.shop')->with('page', $page);
     }
 
     public function cart()
     {
-        return view('pages.cart');
+        $page = ucfirst('cart');
+        return view('pages.cart')->with('page', $page);
+    }
+
+    public function contact()
+    {
+        $page = ucfirst('contact');
+        return view('pages.contact')->with('page', $page);
     }
 }
