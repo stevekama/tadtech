@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Categories;
+
 class CategoriesController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $page = ucfirst('categories');
+        $categories = Categories::orderBy('id', 'desc')->paginate(10);
+        return view('categories.index')->with('page', $page)->with('categories', $categories);
     }
 
     /**
