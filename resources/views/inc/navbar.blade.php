@@ -153,7 +153,7 @@
                                 <ul class="standard_dropdown main_nav_dropdown">
                                     <li>
                                         <a href="/">
-                                            Home<i class="fas fa-chevron-down"></i>
+                                            Tad<i class="fas fa-chevron-down"></i>
                                         </a>
                                     </li>
                                     <li class="hassubs">
