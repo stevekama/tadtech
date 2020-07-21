@@ -8,3 +8,6 @@ Route::get('/contact', 'PagesController@contact');
 
 // bring in categories
 Route::resource('categories', 'CategoriesController');
+
+// bring in products
+Route::resource('products', 'ProductsController');

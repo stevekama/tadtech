@@ -5,7 +5,7 @@
         alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3"
         style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">TadTech</span>
     </a>
 
     <!-- Sidebar -->
@@ -83,7 +83,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/products" class="nav-link">
                             <i class="fa fa-circle nav-icon"></i>
                             <p>product list</p>
                         </a>
