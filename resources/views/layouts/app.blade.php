@@ -32,7 +32,6 @@
         <title>{{ config('app.name', 'TadTech')}}</title>
     </head>
     <body>
-        
         <div class="super_container">
             @include('inc.navbar')
             @yield('content')

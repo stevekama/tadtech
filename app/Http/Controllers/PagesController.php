@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Categories;
 
 class PagesController extends Controller
 {
     public function index(){
         $page = ucfirst('home');
+        $categories = Categories::orderBy('id', 'desc')->get();
         // return view('pages.index', compact('page'));
-        return view('pages.index')->with('page', $page);
+        return view('pages.index')->with('page', $page)->with('categories', $categories);
     }
 
     public function shop()

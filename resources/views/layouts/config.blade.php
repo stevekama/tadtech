@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Admin | {{$page}}</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +50,7 @@
                             <a href="#" class="dropdown-item">
                                 <!-- Message Start -->
                                 <div class="media">
-                                    <img src="{{('back/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                    <img src="{{asset('back/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                     <div class="media-body">
                                         <h3 class="dropdown-item-title">
                                             Brad Diesel
@@ -142,6 +143,7 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                @include('inc.message')
                 @yield('content')
             </div>
             <!-- /.content-wrapper -->
@@ -172,5 +174,4 @@
         <!-- page scripts -->
         <script src="{{asset('back/dist/js/pages/categories.js')}}"></script>
     </body>
-
 </html>

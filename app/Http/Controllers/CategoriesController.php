@@ -27,7 +27,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        $page = ucfirst('categories');
+        return view('categories.create')->with('page', $page);
     }
 
     /**
@@ -38,7 +39,19 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required'
+        ]);
+
+        // create category 
+        $category = new Categories();
+        $category->category = $request->input('category');
+        $category->category_icon = 'fa-list';
+        $category->category_image = 'noimage.png';
+        $category->save();
+
+        // redirect 
+        return redirect('/categories')->with('success', 'Category Successfully created');
     }
 
     /**

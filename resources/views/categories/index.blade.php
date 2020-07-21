@@ -29,9 +29,9 @@
                                 Product Categories
                             </h3>
                             <div class="card-tools">
-                                <button id="newCategoryBtn" class="btn btn-primary">
+                                <a href="/categories/create" class="btn btn-primary">
                                     New Category
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -60,7 +60,7 @@
                                                 </td>
                                                 <td> 
                                                     <button id="{{$category->id}}" class="btn btn-danger delete">
-                                                        Edit
+                                                        Delete
                                                     </button>
                                                 </td>
                                             </tr>
@@ -94,28 +94,5 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-        <div class="modal fade" id="newCategoryModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">New Category</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-    </section>
     <!-- /.content -->
 @endsection
