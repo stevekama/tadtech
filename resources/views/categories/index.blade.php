@@ -54,14 +54,18 @@
                                                 </td>
                                                 <td>{{$category->category}}</td>
                                                 <td>
-                                                    <button id="{{$category->id}}" class="btn btn-info edit">
+                                                    <a href="/categories/{{$category->id}}/edit" class="btn btn-warning btn-sm btn-flat">
                                                         Edit
-                                                    </button>
+                                                    </a>
                                                 </td>
-                                                <td> 
-                                                    <button id="{{$category->id}}" class="btn btn-danger delete">
-                                                        Delete
-                                                    </button>
+                                                <td>
+                                                    <form action="/categories/{{$category->id}}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger btn-sm btn-flat">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

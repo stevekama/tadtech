@@ -51,7 +51,7 @@ class CategoriesController extends Controller
         $category->save();
 
         // redirect 
-        return redirect('/categories')->with('success', 'Category Successfully created');
+        return redirect('/categories')->with('success', 'Category Successfully Created');
     }
 
     /**
@@ -73,7 +73,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = ucfirst('categories');
+        $category = Categories::find($id);
+        return view('categories.edit')->with('page', $page)->with('category', $category);
     }
 
     /**
@@ -82,10 +84,22 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+    **/
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required'
+        ]);
+
+        // create category 
+        $category = Categories::find($id);
+        $category->category = $request->input('category');
+        $category->category_icon = 'fa-list';
+        $category->category_image = 'noimage.png';
+        $category->save();
+
+        // redirect 
+        return redirect('/categories')->with('success', 'Category Successfully Updated');
     }
 
     /**
@@ -96,6 +110,10 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Categories::find($id);
+        $category->delete();
+        
+        // redirect
+        return redirect('/categories')->with('success', 'Category successfully deleted');
     }
 }

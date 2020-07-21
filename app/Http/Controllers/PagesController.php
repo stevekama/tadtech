@@ -17,19 +17,21 @@ class PagesController extends Controller
     public function shop()
     {
         $page = ucfirst('shop');
-        
-        return view('pages.shop')->with('page', $page);
+        $categories = Categories::orderBy('id', 'desc')->get();
+        return view('pages.shop')->with('page', $page)->with('categories', $categories);
     }
 
     public function cart()
     {
         $page = ucfirst('cart');
-        return view('pages.cart')->with('page', $page);
+        $categories = Categories::orderBy('id', 'desc')->get();
+        return view('pages.cart')->with('page', $page)->with('categories', $categories);
     }
 
     public function contact()
     {
         $page = ucfirst('contact');
-        return view('pages.contact')->with('page', $page);
+        $categories = Categories::orderBy('id', 'desc')->get();
+        return view('pages.contact')->with('page', $page)->with('categories', $categories);
     }
 }
