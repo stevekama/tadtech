@@ -47,8 +47,6 @@
                                             <th>Status</th>
                                             <th>Units</th>
                                             <th>View</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,36 +65,10 @@
                                                         View
                                                     </a>
                                                 </td>
-                                                <td>
-                                                    <a href="/products/{{$product->id}}/edit" class="btn btn-warning btn-sm btn-flat">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <form action="/products/{{$product->id}}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger btn-sm btn-flat">
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Product</th>
-                                            <th>Category</th>
-                                            <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Units</th>
-                                            <th>View</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             @else
                                 <div class="alert alert-danger alert-dismissible">
