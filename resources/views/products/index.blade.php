@@ -53,7 +53,7 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td>
-                                                    image
+                                                    <img src="/storage/images/products/{{$product->product_image}}" alt="{{$product->product_name}}" class="img-circle img-size-32 mr-2"/>
                                                 </td>
                                                 <td>{{$product->product_name}}</td>
                                                 <td>{{$product->category_id}}</td>

@@ -31,7 +31,7 @@
                             </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="/products/{{$product->id}}" method="POST">
+                        <form action="/products/{{$product->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -63,12 +63,19 @@
                                     </textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="product_image">
+                                        Product Image
+                                    </label>
+                                    <input type="file" id="product_image" name="product_image"/>
+                                    <p class="help-block">Upload the product image here.</p>
+                                </div>
+                                <div class="form-group">
                                     <label for="product_price">Price</label>
                                     <input type="text" class="form-control" placeholder="Enter product price" name="product_price" value="{{$product->product_price}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="product_units">Units</label>
-                                    <input type="text" class="form-control" placeholder="Enter product units" name="product_units" value="{{$product->product_price}}">
+                                    <input type="text" class="form-control" placeholder="Enter product units" name="product_units" value="{{$product->product_units}}">
                                 </div>
                             </div>
                             <!-- /.card-body -->

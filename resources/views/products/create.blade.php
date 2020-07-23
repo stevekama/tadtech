@@ -31,7 +31,7 @@
                             </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="/products" method="POST">
+                        <form action="/products" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -56,6 +56,13 @@
                                 <div class="form-group">
                                     <label for="product_description">Description</label>
                                     <textarea name="product_description" placeholder="Enter Product Description" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="product_image">
+                                        Product Image
+                                    </label>
+                                    <input type="file" id="product_image" name="product_image"/>
+                                    <p class="help-block">Upload the product image here.</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="product_price">Price</label>

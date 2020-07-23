@@ -45,15 +45,33 @@ class ProductsController extends Controller
             'product_name' => 'required',
             'product_description'=>'required',
             'product_price' => 'required',
-            'product_units' => 'required'
+            'product_units' => 'required',
+            'product_image' => 'image|nullable'
         ]);
+
+        // Handle file upload 
+        if($request->hasFile('product_image')){
+            // get filename with the extension 
+            $filenameWithExt = $request->file('product_image')->getClientOriginalName();
+            // get just filename 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('product_image')->getClientOriginalExtension();
+            // file name to store
+            $fileNameToStore = $filename."_".time().".".$extension;
+            // Upload the image
+            $path = $request->file("product_image")->storeAs('public/images/products', $fileNameToStore);
+        }else {
+            $fileNameToStore = "noimage.png";
+        }
+
         
         // create product
         $product = new Products();
         $product->category_id = $request->input('category_id');
         $product->product_name = $request->input('product_name');
         $product->product_description = $request->input('product_description');
-        $product->product_image = "noimage.png";
+        $product->product_image = $fileNameToStore;
         $product->product_price = $request->input('product_price');
         $product->product_status = "NEW";
         $product->product_units = $request->input('product_units');
@@ -105,13 +123,29 @@ class ProductsController extends Controller
             'product_price' => 'required',
             'product_units' => 'required'
         ]);
+
+        // Handle file upload 
+        if($request->hasFile('product_image')){
+            // get filename with the extension 
+            $filenameWithExt = $request->file('product_image')->getClientOriginalName();
+            // get just filename 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('product_image')->getClientOriginalExtension();
+            // file name to store
+            $fileNameToStore = $filename."_".time().".".$extension;
+            // Upload the image
+            $path = $request->file("product_image")->storeAs('public/images/products', $fileNameToStore);
+        }
         
         // create product
         $product = Products::find($id);
         $product->category_id = $request->input('category_id');
         $product->product_name = $request->input('product_name');
         $product->product_description = $request->input('product_description');
-        $product->product_image = "noimage.png";
+        if($request->hasFile('product_image')){
+            $product->product_image = $fileNameToStore;
+        }
         $product->product_price = $request->input('product_price');
         $product->product_status = "NEW";
         $product->product_units = $request->input('product_units');
