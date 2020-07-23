@@ -31,15 +31,20 @@
                             </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="/categories/{{$category->id}}" method="POST">
+                        <form action="/categories/{{$category->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-body table-responsive">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input name="_method" type="hidden" value="PUT" class="form-control"/>
+                                </div>
                                 <div class="form-group">
                                     <label for="category">Category</label>
                                     <input type="text" name="category" class="form-control" id="category" placeholder="Enter Category" value="{{$category->category}}"/>
                                 </div>
                                 <div class="form-group">
-                                    <input name="_method" type="hidden" value="PUT" class="form-control"/>
+                                    <label for="category_image">Banner</label>
+                                    <input type="file" id="category_image" name="category_image"/>
+                                    <p class="help-block">Upload the category banner here.</p>
                                 </div>
                             </div>
                             <!-- /.card-body -->

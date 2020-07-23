@@ -31,12 +31,17 @@
                             </h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="/categories" method="POST">
+                        <form action="/categories" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body table-responsive">
                                 <div class="form-group">
                                     <label for="category">Category</label>
                                     <input type="text" name="category" class="form-control" id="category" placeholder="Enter Category">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category_image">Banner</label>
+                                    <input type="file" id="category_image" name="category_image"/>
+                                    <p class="help-block">Upload the category banner here.</p>
                                 </div>
                             </div>
                             <!-- /.card-body -->

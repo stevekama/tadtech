@@ -40,7 +40,7 @@
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
+                                            <th>Banner</th>
                                             <th>Category</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -50,7 +50,7 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>
-                                                    image
+                                                    <img src="/storage/images/categories/{{$category->category_image}}" alt="{{$category->category}}" class="img-circle img-size-32 mr-2"/>
                                                 </td>
                                                 <td>{{$category->category}}</td>
                                                 <td>
@@ -70,14 +70,6 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Category</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             @else
                                 <div class="alert alert-danger alert-dismissible">
@@ -98,5 +90,6 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
+    </section>
     <!-- /.content -->
 @endsection

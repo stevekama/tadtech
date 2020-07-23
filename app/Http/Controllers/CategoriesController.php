@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use App\Categories;
 
 class CategoriesController extends Controller
@@ -40,14 +40,31 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'category' => 'required'
+            'category' => 'required',
+            'category_image' => 'image|nullable'
         ]);
+
+        // Handle file upload
+        if($request->hasFile('category_image')){
+            // get filename with the extension 
+            $filenameWithExt = $request->file('category_image')->getClientOriginalName();
+            // get just filename 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('category_image')->getClientOriginalExtension();
+            // file name to store
+            $fileNameToStore = $filename."_".time().".".$extension;
+            // Upload the image
+            $path = $request->file("category_image")->storeAs('public/images/categories', $fileNameToStore);
+        }else {
+            $fileNameToStore = "noimage.png";
+        }
 
         // create category 
         $category = new Categories();
         $category->category = $request->input('category');
         $category->category_icon = 'fa-list';
-        $category->category_image = 'noimage.png';
+        $category->category_image = $fileNameToStore;
         $category->save();
 
         // redirect 
@@ -91,11 +108,27 @@ class CategoriesController extends Controller
             'category' => 'required'
         ]);
 
+        // Handle file upload
+        if($request->hasFile('category_image')){
+            // get filename with the extension 
+            $filenameWithExt = $request->file('category_image')->getClientOriginalName();
+            // get just filename 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('category_image')->getClientOriginalExtension();
+            // file name to store
+            $fileNameToStore = $filename."_".time().".".$extension;
+            // Upload the image
+            $path = $request->file("category_image")->storeAs('public/images/categories', $fileNameToStore);
+        }
+
         // create category 
         $category = Categories::find($id);
         $category->category = $request->input('category');
         $category->category_icon = 'fa-list';
-        $category->category_image = 'noimage.png';
+        if($request->hasFile('category_image')){
+            $category->category_image = $fileNameToStore;
+        }
         $category->save();
 
         // redirect 
@@ -111,6 +144,12 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Categories::find($id);
+
+        if($category->category_image != "noimage.png"){
+            // Delete the image
+            Storage::delete('public/storage/images/categories/'.$category->category_image);
+        }
+
         $category->delete();
         
         // redirect
