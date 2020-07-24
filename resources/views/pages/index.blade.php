@@ -87,163 +87,98 @@
 		<div class="container">
 			<div class="row">
 				<div class="col d-flex flex-lg-row flex-column align-items-center justify-content-start">
-					
 					<!-- Deals -->
 					<div class="deals">
 						<div class="deals_title">Deals of the Week</div>
 						<div class="deals_slider_container">
 							<!-- Deals Slider -->
 							<div class="owl-carousel owl-theme deals_slider">
-								<!-- Deals Item -->
-								<div class="owl-item deals_item">
-									<div class="deals_image">
-										<img src="{{asset('images/deals.png')}}" alt="">
-									</div>
-									<div class="deals_content">
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_category"><a href="#">Headphones</a></div>
-											<div class="deals_item_price_a ml-auto">$300</div>
-										</div>
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_name">Beoplay H7</div>
-											<div class="deals_item_price ml-auto">$225</div>
-										</div>
-										<div class="available">
-											<div class="available_line d-flex flex-row justify-content-start">
-												<div class="available_title">Available: <span>6</span></div>
-												<div class="sold_title ml-auto">Already sold: <span>28</span></div>
+								@if (count($products) > 0)
+									@foreach ($products as $product)
+										<!-- Deals Item -->
+										<div class="owl-item deals_item">
+											<div class="deals_image">
+												<img src="/storage/images/products/{{$product->product_image}}" alt="">
 											</div>
-											<div class="available_bar"><span style="width:17%"></span></div>
-										</div>
-										<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-											<div class="deals_timer_title_container">
-												<div class="deals_timer_title">Hurry Up</div>
-												<div class="deals_timer_subtitle">Offer ends in:</div>
+
+											<div class="deals_content">
+												<div class="deals_info_line d-flex flex-row justify-content-start">
+													<div class="deals_item_category">
+														<a href="#">{{$product->category}}</a>
+													</div>
+													{{-- <div class="deals_item_price_a ml-auto">$300</div> --}}
+												</div>
+												<div class="deals_info_line d-flex flex-row justify-content-start">
+													<div class="deals_item_name">
+														{{$product->product_name}}
+													</div>
+													<div class="deals_item_price ml-auto">
+														KShs.{{$product->product_price}}
+													</div>
+												</div>
 											</div>
-											<div class="deals_timer_content ml-auto">
-												<div class="deals_timer_box clearfix" data-target-time="">
-													<div class="deals_timer_unit">
-														<div id="deals_timer1_hr" class="deals_timer_hr"></div>
-														<span>hours</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer1_min" class="deals_timer_min"></div>
-														<span>mins</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer1_sec" class="deals_timer_sec"></div>
-														<span>secs</span>
+										</div>
+									@endforeach
+
+								@else
+									<!-- Deals Item -->
+									<div class="owl-item deals_item">
+										<div class="deals_image">
+											<img src="{{asset('images/deals.png')}}" alt="">
+										</div>
+										<div class="deals_content">
+											<div class="deals_info_line d-flex flex-row justify-content-start">
+												<div class="deals_item_category">
+													<a href="#">Headphones</a>
+												</div>
+												<div class="deals_item_price_a ml-auto">$300</div>
+											</div>
+											<div class="deals_info_line d-flex flex-row justify-content-start">
+												<div class="deals_item_name">Beoplay H7</div>
+												<div class="deals_item_price ml-auto">$225</div>
+											</div>
+											<div class="available">
+												<div class="available_line d-flex flex-row justify-content-start">
+													<div class="available_title">Available: <span>6</span></div>
+													<div class="sold_title ml-auto">Already sold: <span>28</span></div>
+												</div>
+												<div class="available_bar"><span style="width:17%"></span></div>
+											</div>
+											<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
+												<div class="deals_timer_title_container">
+													<div class="deals_timer_title">Hurry Up</div>
+													<div class="deals_timer_subtitle">Offer ends in:</div>
+												</div>
+												<div class="deals_timer_content ml-auto">
+													<div class="deals_timer_box clearfix" data-target-time="">
+														<div class="deals_timer_unit">
+															<div id="deals_timer2_hr" class="deals_timer_hr"></div>
+															<span>hours</span>
+														</div>
+														<div class="deals_timer_unit">
+															<div id="deals_timer2_min" class="deals_timer_min"></div>
+															<span>mins</span>
+														</div>
+														<div class="deals_timer_unit">
+															<div id="deals_timer2_sec" class="deals_timer_sec"></div>
+															<span>secs</span>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-
-								<!-- Deals Item -->
-								<div class="owl-item deals_item">
-									<div class="deals_image">
-										<img src="{{asset('images/deals.png')}}" alt="">
-									</div>
-									<div class="deals_content">
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_category">
-												<a href="#">Headphones</a>
-											</div>
-											<div class="deals_item_price_a ml-auto">$300</div>
-										</div>
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_name">Beoplay H7</div>
-											<div class="deals_item_price ml-auto">$225</div>
-										</div>
-										<div class="available">
-											<div class="available_line d-flex flex-row justify-content-start">
-												<div class="available_title">Available: <span>6</span></div>
-												<div class="sold_title ml-auto">Already sold: <span>28</span></div>
-											</div>
-											<div class="available_bar"><span style="width:17%"></span></div>
-										</div>
-										<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-											<div class="deals_timer_title_container">
-												<div class="deals_timer_title">Hurry Up</div>
-												<div class="deals_timer_subtitle">Offer ends in:</div>
-											</div>
-											<div class="deals_timer_content ml-auto">
-												<div class="deals_timer_box clearfix" data-target-time="">
-													<div class="deals_timer_unit">
-														<div id="deals_timer2_hr" class="deals_timer_hr"></div>
-														<span>hours</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer2_min" class="deals_timer_min"></div>
-														<span>mins</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer2_sec" class="deals_timer_sec"></div>
-														<span>secs</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Deals Item -->
-								<div class="owl-item deals_item">
-									<div class="deals_image"><img src="{{asset('images/deals.png')}}" alt=""></div>
-									<div class="deals_content">
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_category">
-												<a href="#">Headphones</a>
-											</div>
-											<div class="deals_item_price_a ml-auto">$300</div>
-										</div>
-										<div class="deals_info_line d-flex flex-row justify-content-start">
-											<div class="deals_item_name">Beoplay H7</div>
-											<div class="deals_item_price ml-auto">$225</div>
-										</div>
-										<div class="available">
-											<div class="available_line d-flex flex-row justify-content-start">
-												<div class="available_title">Available: <span>6</span></div>
-												<div class="sold_title ml-auto">Already sold: <span>28</span></div>
-											</div>
-											<div class="available_bar"><span style="width:17%"></span></div>
-										</div>
-										<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-											<div class="deals_timer_title_container">
-												<div class="deals_timer_title">Hurry Up</div>
-												<div class="deals_timer_subtitle">Offer ends in:</div>
-											</div>
-											<div class="deals_timer_content ml-auto">
-												<div class="deals_timer_box clearfix" data-target-time="">
-													<div class="deals_timer_unit">
-														<div id="deals_timer3_hr" class="deals_timer_hr"></div>
-														<span>hours</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer3_min" class="deals_timer_min"></div>
-														<span>mins</span>
-													</div>
-													<div class="deals_timer_unit">
-														<div id="deals_timer3_sec" class="deals_timer_sec"></div>
-														<span>secs</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
+								@endif
 							</div>
 
 						</div>
 
 						<div class="deals_slider_nav_container">
 							<div class="deals_slider_prev deals_slider_nav">
-								<i class="fas fa-chevron-left ml-auto"></i>
+								<i class="fa fa-chevron-left ml-auto"></i>
 							</div>
 							<div class="deals_slider_next deals_slider_nav">
-								<i class="fas fa-chevron-right ml-auto"></i>
+								<i class="fa fa-chevron-right ml-auto"></i>
 							</div>
 						</div>
 					</div>
@@ -295,7 +230,7 @@
 														</div>
 													</div>
 													<div class="product_fav">
-														<i class="fas fa-heart"></i>
+														<i class="fa fa-heart"></i>
 													</div>
 													<ul class="product_marks">
 														<li class="product_mark product_new">
@@ -324,7 +259,7 @@
 													
 												</div>
 												<div class="product_fav">
-													<i class="fas fa-heart"></i>
+													<i class="fa fa-heart"></i>
 												</div>
 												
 											</div>
@@ -355,7 +290,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -380,7 +315,7 @@
 													<button class="product_cart_button active">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -405,7 +340,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -430,7 +365,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -455,7 +390,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -480,7 +415,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -505,7 +440,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -530,7 +465,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -555,7 +490,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -580,7 +515,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -605,7 +540,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -630,7 +565,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -655,7 +590,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -680,7 +615,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -705,7 +640,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -730,7 +665,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -764,7 +699,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -789,7 +724,7 @@
 													<button class="product_cart_button active">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -814,7 +749,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -839,7 +774,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -871,7 +806,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -896,7 +831,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -921,7 +856,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>
 												<li class="product_mark product_new">new</li>
@@ -946,7 +881,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -971,7 +906,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -996,7 +931,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1021,7 +956,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1046,7 +981,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1071,7 +1006,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1096,7 +1031,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1121,7 +1056,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1146,7 +1081,7 @@
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+											<div class="product_fav"><i class="fa fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount"></li>
 												<li class="product_mark product_new">new</li>
@@ -1174,59 +1109,46 @@
 					<div class="popular_categories_content">
 						<div class="popular_categories_title">Popular Categories</div>
 						<div class="popular_categories_slider_nav">
-							<div class="popular_categories_prev popular_categories_nav"><i class="fas fa-angle-left ml-auto"></i></div>
-							<div class="popular_categories_next popular_categories_nav"><i class="fas fa-angle-right ml-auto"></i></div>
+							<div class="popular_categories_prev popular_categories_nav">
+								<i class="fa fa-angle-left ml-auto"></i>
+							</div>
+							<div class="popular_categories_next popular_categories_nav">
+								<i class="fa fa-angle-right ml-auto"></i>
+							</div>
 						</div>
-						<div class="popular_categories_link"><a href="#">full catalog</a></div>
+						<div class="popular_categories_link">
+							<a href="#">full catalog</a>
+						</div>
 					</div>
 				</div>
 				
 				<!-- Popular Categories Slider -->
-
 				<div class="col-lg-9">
 					<div class="popular_categories_slider_container">
 						<div class="owl-carousel owl-theme popular_categories_slider">
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_1.png" alt=""></div>
-									<div class="popular_category_text">Smartphones & Tablets</div>
+							@if (count($categories) > 0)
+								@foreach ($categories as $category)
+									<!-- Popular Categories Item -->
+									<div class="owl-item">
+										<div class="popular_category d-flex flex-column align-items-center justify-content-center">
+											<div class="popular_category_image">
+											<img src="/storage/images/ctaegories/{{$category->category_image}}" alt="">
+											</div>
+											<div class="popular_category_text">
+												{{$category->category}}
+											</div>
+										</div>
+									</div>
+								@endforeach
+							@else
+								<!-- Popular Categories Item -->
+								<div class="owl-item">
+									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
+										<div class="popular_category_image"><img src="images/popular_2.png" alt=""></div>
+										<div class="popular_category_text">Computers & Laptops</div>
+									</div>
 								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_2.png" alt=""></div>
-									<div class="popular_category_text">Computers & Laptops</div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_3.png" alt=""></div>
-									<div class="popular_category_text">Gadgets</div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_4.png" alt=""></div>
-									<div class="popular_category_text">Video Games & Consoles</div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="images/popular_5.png" alt=""></div>
-									<div class="popular_category_text">Accessories</div>
-								</div>
-							</div>
-
+							@endif
 						</div>
 					</div>
 				</div>
@@ -1236,88 +1158,76 @@
 
 	<!-- Banner -->
 	<div class="banner_2">
+		
 		<div class="banner_2_background" style="background-image:url(images/banner_2_background.jpg)"></div>
 		<div class="banner_2_container">
 			<div class="banner_2_dots"></div>
 			<!-- Banner 2 Slider -->
 
 			<div class="owl-carousel owl-theme banner_2_slider">
-
 				<!-- Banner 2 Slider Item -->
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content">
-										<div class="banner_2_category">Laptops</div>
-										<div class="banner_2_title">MacBook Air 13</div>
-										<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-										<div class="button banner_2_button"><a href="#">Explore</a></div>
+				@if (count($products) > 0)
+					@foreach ($products as $product)
+						<div class="owl-item">
+							<div class="banner_2_item">
+								<div class="container fill_height">
+									<div class="row fill_height">
+										<div class="col-lg-4 col-md-6 fill_height">
+											<div class="banner_2_content">
+												<div class="banner_2_category">{{$product->category}}</div>
+												<div class="banner_2_title">{{$product->product_name}}</div>
+												<div class="banner_2_text">
+													{{$product->product_details}}
+												</div>
+												<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
+												<div class="button banner_2_button">
+													<a href="#">Explore</a>
+												</div>
+											</div>
+	
+										</div>
+										<div class="col-lg-8 col-md-6 fill_height">
+											<div class="banner_2_image_container">
+												<div class="banner_2_image">
+													<img src="/storage/images/products/{{$product->product_image}}" alt="">
+												</div>
+										</div>
+											</div>
 									</div>
-									
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-										<div class="banner_2_image"><img src="images/banner_2_product.png" alt=""></div>
-									</div>
-								</div>
+								</div>			
 							</div>
-						</div>			
+						</div>
+					@endforeach
+				@else
+					<!-- Banner 2 Slider Item -->
+					<div class="owl-item">
+						<div class="banner_2_item">
+							<div class="container fill_height">
+								<div class="row fill_height">
+									<div class="col-lg-4 col-md-6 fill_height">
+										<div class="banner_2_content">
+											<div class="banner_2_category">Welcome </div>
+											<div class="banner_2_title">TadTech</div>
+											<div class="banner_2_text">We have more products for you</div>
+											<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
+											<div class="button banner_2_button">
+												<a href="/">Explore</a>
+											</div>
+										</div>
+										
+									</div>
+									<div class="col-lg-8 col-md-6 fill_height">
+										<div class="banner_2_image_container">
+											<div class="banner_2_image"><img src="{{assets("storage/images/products/noimage.png")}}" alt=""></div>
+										</div>
+									</div>
+								</div>
+							</div>			
+						</div>
 					</div>
-				</div>
 
-				<!-- Banner 2 Slider Item -->
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content">
-										<div class="banner_2_category">Laptops</div>
-										<div class="banner_2_title">MacBook Air 13</div>
-										<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-										<div class="button banner_2_button"><a href="#">Explore</a></div>
-									</div>
-									
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-										<div class="banner_2_image"><img src="images/banner_2_product.png" alt=""></div>
-									</div>
-								</div>
-							</div>
-						</div>			
-					</div>
-				</div>
-
-				<!-- Banner 2 Slider Item -->
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content">
-										<div class="banner_2_category">Laptops</div>
-										<div class="banner_2_title">MacBook Air 13</div>
-										<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
-										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-										<div class="button banner_2_button"><a href="#">Explore</a></div>
-									</div>
-									
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-										<div class="banner_2_image"><img src="images/banner_2_product.png" alt=""></div>
-									</div>
-								</div>
-							</div>
-						</div>			
-					</div>
-				</div>
-
+				@endif
+				
 			</div>
 		</div>
 	</div>
@@ -1366,7 +1276,7 @@
 																</button>
 															</div>
 														</div>
-														<div class="product_fav"><i class="fas fa-heart"></i></div>
+														<div class="product_fav"><i class="fa fa-heart"></i></div>
 														<ul class="product_marks">
 															<li class="product_mark product_new">
 																{{$product->product_status}}
@@ -1392,7 +1302,7 @@
 														</div>
 													</div>
 													<div class="product_fav">
-														<i class="fas fa-heart"></i>
+														<i class="fa fa-heart"></i>
 													</div>
 													
 												</div>

@@ -5,34 +5,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
+        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap4/bootstrap.min.css')}}"/>
-        <link href="{{asset('plugins/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{asset('back/components/font-awesome/css/font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('plugins/slick-1.8.0/slick.cs')}}s">
-        @if ($page == 'Home')
-            <link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
-        @endif
+        @isset($page)
+            @if ($page == 'Home')
+                <link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
+            @endif
 
-        @if ($page == 'Shop')
-            <link rel="stylesheet" type="text/css" href="{{asset('css/shop_styles.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('css/shop_responsive.css')}}">
-        @endif
+            @if ($page == 'Shop')
+                <link rel="stylesheet" type="text/css" href="{{asset('css/shop_styles.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{asset('css/shop_responsive.css')}}">
+            @endif
 
-        @if ($page == 'Contact')
+            @if ($page == 'Contact')
+                <link rel="stylesheet" type="text/css" href="{{asset('css/contact_styles.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{asset('css/contact_responsive.css')}}">        
+            @endif
+
+            @if ($page == "Cart")
+                <link rel="stylesheet" type="text/css" href="{{asset('css/cart_styles.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{asset('css/cart_responsive.css')}}">
+            @endif
+        @else
             <link rel="stylesheet" type="text/css" href="{{asset('css/contact_styles.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('css/contact_responsive.css')}}">        
-        @endif
-
-        @if ($page == "Cart")
-            <link rel="stylesheet" type="text/css" href="{{asset('css/cart_styles.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('css/cart_responsive.css')}}">
-        @endif
-       
+        @endisset
         <title>{{ config('app.name', 'TadTech')}}</title>
     </head>
     <body>
@@ -40,69 +46,72 @@
             @include('inc.navbar')
             @yield('content')
 
-            @if ($page != "Contact" && $page != "Cart")
-                <!-- Brands -->
-                <div class="brands">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="brands_slider_container">
-                                    <!-- Brands Slider -->
-                                    <div class="owl-carousel owl-theme brands_slider">
+            @isset($page)
+                @if ($page != "Contact" && $page != "Cart")
+                    <!-- Brands -->
+                    <div class="brands">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="brands_slider_container">
+                                        <!-- Brands Slider -->
+                                        <div class="owl-carousel owl-theme brands_slider">
+                                            
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_1.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_2.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_3.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_4.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_5.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_6.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_7.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="owl-item">
+                                                <div class="brands_item d-flex flex-column justify-content-center">
+                                                    <img src="{{asset('images/brands_8.jpg')}}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
                                         
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_1.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_2.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_3.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_4.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_5.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_6.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_7.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item">
-                                            <div class="brands_item d-flex flex-column justify-content-center">
-                                                <img src="{{asset('images/brands_8.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Brands Slider Navigation -->
-                                    <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-                                    <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+                                        <!-- Brands Slider Navigation -->
+                                        <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
+                                        <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            @endif
+                @endif
+            @endisset
+           
 
             {{-- footer --}}
             <footer class="footer">
@@ -112,7 +121,11 @@
                         <div class="col-lg-3 footer_col">
                             <div class="footer_column footer_contact">
                                 <div class="logo_container">
-                                    <div class="logo"><a href="#">OneTech</a></div>
+                                    <div class="logo">
+                                        <a href="#">
+                                            {{ config('app.name', 'TadTech')}}
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="footer_title">Got Question? Call Us 24/7</div>
                                 <div class="footer_phone">+38 068 005 3570</div>
@@ -220,20 +233,22 @@
         <script src="{{asset('plugins/Isotope/isotope.pkgd.min.js')}}"></script>
         <script src="{{asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
         <script src="{{asset('plugins/parallax-js-master/parallax.min.js')}}"></script>
-        @if ($page == "Home")
-            <script src="{{asset('js/custom.js')}}"></script>
-        @endif
+        @isset($page)
+            @if ($page == "Home")
+                <script src="{{asset('js/custom.js')}}"></script>
+            @endif
 
-        @if ($page == "Shop")
-            <script src="{{asset('js/shop_custom.js')}}"></script>
-        @endif
+            @if ($page == "Shop")
+                <script src="{{asset('js/shop_custom.js')}}"></script>
+            @endif
 
-        @if ($page == "Contact")
-            <script src="{{asset('js/contact_custom.js')}}"></script>
-        @endif
+            @if ($page == "Contact")
+                <script src="{{asset('js/contact_custom.js')}}"></script>
+            @endif
 
-        @if ($page == "Cart")
-            <script src="{{asset('js/cart_custom.js')}}"></script>
-        @endif
+            @if ($page == "Cart")
+                <script src="{{asset('js/cart_custom.js')}}"></script>
+            @endif
+        @endisset
     </body>
 </html>

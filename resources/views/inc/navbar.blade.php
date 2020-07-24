@@ -25,31 +25,55 @@
                     {{-- top_bar_contact_item --}}
 
                     <div class="top_bar_content ml-auto">
-                        <div class="top_bar_menu">
-                            <ul class="standard_dropdown top_bar_dropdown">
-                                <li>
-                                    <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">Italian</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Japanese</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">EUR Euro</a></li>
-                                        <li><a href="#">GBP British Pound</a></li>
-                                        <li><a href="#">JPY Japanese Yen</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            {{-- standard_dropdown top_bar_dropdown --}}
-                        </div>
+                        
                         <div class="top_bar_user">
-                            <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                            <div><a href="#">Register</a></div>
-                            <div><a href="#">Sign in</a></div>
+                            <div class="user_icon">
+                                <img src="{{asset('images/user.svg')}}" alt="">
+                            </div>
+                            <!-- Authentication Links -->
+                            @guest
+                                <div> <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div>
+                                @if (Route::has('register'))
+                                    <div><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></div>
+                                @endif     
+                            @else
+                                
+                                <div>
+                                    <ul class="standard_dropdown main_nav_dropdown">
+                                        <li class="hassubs">
+                                            <a href="#">
+                                                {{ Auth::user()->name }} <i class="fa fa-chevron-down"></i>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+                
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div> --}}
+
+                            @endguest
                         </div>
                     </div>
                     {{-- top_bar_content ml-auto --}}
@@ -68,7 +92,7 @@
                     <div class="logo_container">
                         <div class="logo">
                             <a href="/">
-                                TadTech
+                                {{ config('app.name', 'TadTech')}}
                             </a>
                         </div>
                     </div>
@@ -81,21 +105,9 @@
                             <div class="header_search_form_container">
                                 <form action="#" class="header_search_form clearfix">
                                     <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
-                                    <div class="custom_dropdown">
-                                        <div class="custom_dropdown_list">
-                                            <span class="custom_dropdown_placeholder clc">All Categories</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                            <ul class="custom_list clc">
-                                                <li><a class="clc" href="#">All Categories</a></li>
-                                                <li><a class="clc" href="#">Computers</a></li>
-                                                <li><a class="clc" href="#">Laptops</a></li>
-                                                <li><a class="clc" href="#">Cameras</a></li>
-                                                <li><a class="clc" href="#">Hardware</a></li>
-                                                <li><a class="clc" href="#">Smartphones</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+                                    <button type="submit" class="header_search_button trans_300" value="Submit">
+                                        <img src="{{asset('images/search.png')}}" alt="">
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -146,23 +158,26 @@
                             </div>
 
                             <ul class="cat_menu">
-                                @if(count($categories) > 0)
-                                    @foreach ($categories as $category)
+                                @isset($categories)
+                                    @if(count($categories) > 0)
+                                        @foreach ($categories as $category)
+                                            <li>
+                                                <a href="#">
+                                                    {{$category->category}}
+                                                    <i class="fa fa-chevron-right ml-auto"></i>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @else
                                         <li>
-                                            <a href="#">
-                                                {{$category->category}}
-                                                <i class="fas fa-chevron-right ml-auto"></i>
+                                            <a href="/">
+                                                No Categories
+                                                <i class="fa fa-chevron-right"></i>
                                             </a>
                                         </li>
-                                    @endforeach
-                                @else
-                                    <li>
-                                        <a href="/">
-                                            No Categories
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                @endif
+                                    @endif
+                                @endisset
+                                
                             </ul>
                         </div>
 
@@ -172,26 +187,26 @@
                             <ul class="standard_dropdown main_nav_dropdown">
                                 <li>
                                     <a href="/">
-                                        TadTech<i class="fas fa-chevron-down"></i>
+                                        TadTech<i class="fa fa-chevron-down"></i>
                                     </a>
                                 </li>
 
                                 <li class="hassubs">
                                     <a href="#">
-                                        Shop<i class="fas fa-chevron-down"></i>
+                                        Shop<i class="fa fa-chevron-down"></i>
                                     </a>
                                     <ul>
                                         <li>
                                             <a href="/shop">
                                                 Shop
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i class="fa fa-chevron-down"></i>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="/contact">
-                                        Contact<i class="fas fa-chevron-down"></i>
+                                        Contact<i class="fa fa-chevron-down"></i>
                                     </a>
                                 </li>
                             </ul>

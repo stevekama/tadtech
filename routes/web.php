@@ -11,6 +11,15 @@ Route::resource('categories', 'CategoriesController');
 
 // bring in products
 Route::resource('products', 'ProductsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
