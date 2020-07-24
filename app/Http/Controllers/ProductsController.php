@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Categories;
 use App\Products;
 
@@ -75,6 +77,7 @@ class ProductsController extends Controller
         $product->product_price = $request->input('product_price');
         $product->product_status = "NEW";
         $product->product_units = $request->input('product_units');
+        $product->product_details = $request->input('product_details');
         $product->save();
         // redirect 
         return redirect('/products')->with('success', 'Product Successfully Created');
@@ -149,6 +152,7 @@ class ProductsController extends Controller
         $product->product_price = $request->input('product_price');
         $product->product_status = "NEW";
         $product->product_units = $request->input('product_units');
+        $product->product_details = $request->input('product_details');
         $product->save();
         // redirect 
         return redirect('/products')->with('success', 'Product Successfully Updated');
@@ -163,6 +167,11 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product = Products::find($id);
+
+        if($product->product_image != "noimage.png"){
+            Storage::delete('public/storage/images/products/'.$product->product_image);
+        }
+        
         $product->delete();
 
         // redirect 

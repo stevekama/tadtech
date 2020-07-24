@@ -45,7 +45,12 @@
 
                     <div class="col-12 col-sm-6">
                         <h3 class="my-3">{{$product->product_name}}</h3>
+                        <hr>
                         <p>Units: {{$product->product_units}}</p>
+                        <hr>
+                        <p>
+                            {{$product->product_details}}
+                        </p>
                         <hr>
                         
                         <div class="bg-gray py-2 px-3 mt-4">

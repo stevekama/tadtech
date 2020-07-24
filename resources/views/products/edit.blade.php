@@ -77,6 +77,10 @@
                                     <label for="product_units">Units</label>
                                     <input type="text" class="form-control" placeholder="Enter product units" name="product_units" value="{{$product->product_units}}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="product_details">Details</label>
+                                    <textarea name="product_details" placeholder="Enter Product Details" class="form-control"></textarea>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
