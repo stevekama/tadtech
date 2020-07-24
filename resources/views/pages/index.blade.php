@@ -1218,7 +1218,7 @@
 									</div>
 									<div class="col-lg-8 col-md-6 fill_height">
 										<div class="banner_2_image_container">
-											<div class="banner_2_image"><img src="{{assets("storage/images/products/noimage.png")}}" alt=""></div>
+											<div class="banner_2_image"><img src="{{asset("storage/images/products/noimage.png")}}" alt=""></div>
 										</div>
 									</div>
 								</div>
