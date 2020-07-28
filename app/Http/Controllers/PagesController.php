@@ -28,7 +28,26 @@ class PagesController extends Controller
     {
         $page = ucfirst('shop');
         $categories = Categories::orderBy('id', 'desc')->get();
-        return view('pages.shop')->with('page', $page)->with('categories', $categories);
+        $products = Products::orderBy('id', 'desc')->paginate(10);
+        return view('pages.shop')->with('page', $page)->with('categories', $categories)->with('products', $products);
+    }
+
+    public function category($id)
+    {
+        $page = ucfirst('shop');
+        $categories = Categories::orderBy('id', 'desc')->get();
+        $category = Categories::find($id);
+        $products = Products::where('category_id', $category->id)->paginate(10);
+        return view('pages.product_categories')->with('page', $page)->with('categories', $categories)->with('products', $products);
+    }
+
+    public function product($id)
+    {
+        $page = ucfirst('product');
+        $categories = Categories::orderBy('id', 'desc')->get();
+        $products = Products::orderBy('id', 'desc')->get();
+        $product = Products::find($id);
+        return view('pages.product_details')->with('page', $page)->with('categories', $categories)->with('product', $product)->with('products', $products);
     }
 
     public function cart()

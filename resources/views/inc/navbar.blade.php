@@ -1,5 +1,4 @@
 <!-- Header -->
-	
 <header class="header">
     <!-- Top Bar -->
     <div class="top_bar">
@@ -61,17 +60,6 @@
                                     </ul>
                                     
                                 </div>
-                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div> --}}
 
                             @endguest
                         </div>
@@ -118,7 +106,9 @@
                 <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                     <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                            <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
+                            <div class="wishlist_icon">
+                                <img src="{{asset('images/heart.png')}}" alt="">
+                            </div>
                             <div class="wishlist_content">
                                 <div class="wishlist_text"><a href="#">Wishlist</a></div>
                                 <div class="wishlist_count">115</div>
@@ -129,7 +119,7 @@
                         <div class="cart">
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
-                                    <img src="images/cart.png" alt="">
+                                    <img src="{{asset('images/cart.png')}}" alt="">
                                     <div class="cart_count"><span>10</span></div>
                                 </div>
                                 <div class="cart_content">
@@ -162,7 +152,7 @@
                                     @if(count($categories) > 0)
                                         @foreach ($categories as $category)
                                             <li>
-                                                <a href="#">
+                                                <a href="/shop/categories/{{$category->id}}">
                                                     {{$category->category}}
                                                     <i class="fa fa-chevron-right ml-auto"></i>
                                                 </a>
@@ -243,70 +233,33 @@
                             </form>
                         </div>
                         <ul class="page_menu_nav">
-                            <li class="page_menu_item has-children">
-                                <a href="#">Language<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Currency<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
+                            
+                            
                             <li class="page_menu_item">
-                                <a href="#">Home<i class="fa fa-angle-down"></i></a>
+                                <a href="/">Home<i class="fa fa-angle-down"></i></a>
                             </li>
                             <li class="page_menu_item has-children">
-                                <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
+                                <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                    <li class="page_menu_item has-children">
-                                        <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                        <ul class="page_menu_selection">
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="/shop">Shop<i class="fa fa-angle-down"></i></a></li>
                                 </ul>
                             </li>
                             <li class="page_menu_item has-children">
-                                <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
+                                <a href="#">Help<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="/contact">Contact us<i class="fa fa-angle-down"></i></a></li>
                                 </ul>
                             </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                            <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
+                            
                         </ul>
                         
                         <div class="menu_contact">
-                            <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                            <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                            <div class="menu_contact_item">
+                                <div class="menu_contact_icon">
+                                    <img src="{{asset('images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
+                            <div class="menu_contact_item">
+                                <div class="menu_contact_icon">
+                                    <img src="{{asset('images/mail_white.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                         </div>
                     </div>
                 </div>

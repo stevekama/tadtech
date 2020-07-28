@@ -213,7 +213,7 @@
 														</div>
 														<div class="product_name">
 															<div>
-																<a href="product.html">
+																<a href="/shop/product/{{$product->id}}">
 																	{{$product->product_name}}
 																</a>
 															</div>
@@ -1132,7 +1132,7 @@
 									<div class="owl-item">
 										<div class="popular_category d-flex flex-column align-items-center justify-content-center">
 											<div class="popular_category_image">
-											<img src="/storage/images/ctaegories/{{$category->category_image}}" alt="">
+											<img src="/storage/images/categories/{{$category->category_image}}" alt="">
 											</div>
 											<div class="popular_category_text">
 												{{$category->category}}
@@ -1177,11 +1177,11 @@
 												<div class="banner_2_category">{{$product->category}}</div>
 												<div class="banner_2_title">{{$product->product_name}}</div>
 												<div class="banner_2_text">
-													{{$product->product_details}}
+													{{ str_limit($product->product_details) }}
 												</div>
 												<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
 												<div class="button banner_2_button">
-													<a href="#">Explore</a>
+													<a href="/shop/product/{{$product->id}}">Explore</a>
 												</div>
 											</div>
 	
@@ -1265,7 +1265,7 @@
 															<div class="product_price">KShs.{{$product->product_price}}</div>
 															<div class="product_name">
 																<div>
-																	<a href="#">
+																	<a href="/shop/product/{{$product->id}}">
 																		{{$product->product_name}}
 																	</a>
 																</div>

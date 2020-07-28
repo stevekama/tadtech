@@ -35,6 +35,11 @@
                 <link rel="stylesheet" type="text/css" href="{{asset('css/cart_styles.css')}}">
                 <link rel="stylesheet" type="text/css" href="{{asset('css/cart_responsive.css')}}">
             @endif
+
+            @if ($page == "Product")
+                <link rel="stylesheet" type="text/css" href="{{asset('css/product_styles.css')}}">
+                <link rel="stylesheet" type="text/css" href="{{asset('css/product_responsive.css')}}">
+            @endif
         @else
             <link rel="stylesheet" type="text/css" href="{{asset('css/contact_styles.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('css/contact_responsive.css')}}">        
@@ -248,6 +253,10 @@
 
             @if ($page == "Cart")
                 <script src="{{asset('js/cart_custom.js')}}"></script>
+            @endif
+            
+            @if ($page == "Product")
+                <script src="{{asset('js/product_custom.js')}}"></script>
             @endif
         @endisset
     </body>
